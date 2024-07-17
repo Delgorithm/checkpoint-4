@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 function Register() {
   const emailRegex = /[a-z0-9._]+@[a-z0-9-]+\.[a-z]{2,3}/;
   const usernameRef = useRef(null);
-  const cityRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
@@ -59,17 +58,6 @@ function Register() {
           />
           {errors.username && <p>{errors.username}</p>}
         </label>
-        <label htmlFor="city">
-          Ville
-          <input
-            type="text"
-            id="city"
-            name="city"
-            ref={cityRef}
-            placeholder="Bordeaux"
-            required
-          />
-        </label>
         <label htmlFor="email">
           E-mail
           <input
@@ -107,13 +95,7 @@ function Register() {
             required
             autoComplete="new-password"
           />
-          {errors.confirmPassword && (
-            <p>{errors.confirmPassword}</p>
-          )}
-        </label>
-        <label htmlFor="checkbox">
-          <input type="checkbox" name="checkbox" id="checkbox" />
-          En cochant, j'accepte les conditions d'utilisation de PixHunt
+          {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         </label>
         <button type="submit">S'inscrire</button>
         <p>

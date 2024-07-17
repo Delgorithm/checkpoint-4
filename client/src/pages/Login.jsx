@@ -36,13 +36,6 @@ function Login() {
           Pas encore inscrit ?<Link to="/register">Créer un compte</Link>
         </p>
       </Form>
-
-      <article>
-        <img
-          src="../src/assets/images/mockup.png"
-          alt="Mockups de l'application"
-        />
-      </article>
     </section>
   );
 }
