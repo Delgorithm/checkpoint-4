@@ -2,8 +2,10 @@ const express = require("express");
 
 const router = express.Router();
 
-const { add } = require("../../../controllers/expensesActions");
+const { add, browse } = require("../../../controllers/expensesActions");
 
-router.post("/add", add);
+router.post("/", add);
+
+router.get("/", browse);
 
 module.exports = router;

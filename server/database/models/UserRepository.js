@@ -19,7 +19,7 @@ class UserRepository extends AbstractRepository {
       `SELECT * FROM ${this.table} WHERE email = ?`,
       [email]
     );
-    return rows[0]; // Assuming email is unique, there should be at most one row
+    return rows[0];
   }
 }
 

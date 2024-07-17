@@ -10,11 +10,11 @@ class CategorySeeder extends AbstractSeeder {
 
   run() {
     const categories = [
-      "Food",
+      "Nourriture",
       "Transport",
-      "Health",
-      "Entertainment",
-      "Other",
+      "Santé",
+      "Plaisirs interdits",
+      "Autre",
     ];
     for (let i = 0; i < categories.length; i += 1) {
       const type = categories[i];

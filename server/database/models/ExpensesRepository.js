@@ -14,6 +14,15 @@ class ExpensesRepository extends AbstractRepository {
 
     return result.insertId;
   }
+
+  async readAll() {
+    const [rows] = await this.database.query(`
+      SELECT Expenses.id, Expenses.amount, Expenses.date, Expenses.user_id, Expenses.category_id, Expenses.description, Category.type AS category
+      FROM ${this.table}
+      INNER JOIN Category ON Expenses.category_id = Category.id
+    `);
+    return rows;
+  }
 }
 
 module.exports = ExpensesRepository;

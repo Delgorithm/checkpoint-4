@@ -21,6 +21,16 @@ const add = async (req, res, next) => {
   }
 };
 
+const browse = async (req, res, next) => {
+  try {
+    const allExpenses = await tables.Expenses.readAll();
+    res.json(allExpenses);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   add,
+  browse,
 };

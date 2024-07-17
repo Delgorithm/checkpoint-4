@@ -1,41 +1,34 @@
-import { Form } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import FormExpenses from "../components/FormExpenses";
 
 function Expenses() {
+  const allExpenses = useLoaderData();
+  // console.log("Mes données : ", allExpenses);
+
   return (
     <>
       <p>Expenses</p>
-      <Form method="POST">
-        <h2>Ma dépense</h2>
+      <FormExpenses method="POST" />
 
-        <label htmlFor="category">
-          Catégorie
-          <select id="category" name="category" required>
-            <option value="Food">Nourriture</option>
-            <option value="Health">Santé</option>
-            <option value="Transport">Transport</option>
-            <option value="Entertainment">Plaisir</option>
-            <option value="Other">Autres</option>
-          </select>
-        </label>
-
-        <label htmlFor="amount">
-          Montant
-          <input
-            type="number"
-            id="amount"
-            name="amount"
-            placeholder="20€..."
-            min="0"
-            max="10000000000"
-            required
-          />
-        </label>
-
-        <input type="hidden" id="user_id" name="user_id" value="1" />
-        <input type="hidden" id="category_id" name="category_id" value="1" />
-
-        <button type="submit">Enregistrer</button>
-      </Form>
+      <h2>Liste des dépenses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Catégorie</th>
+            <th>Montant</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allExpenses.map((expense) => (
+            <tr key={expense.id}>
+              <td>{expense.category}</td>
+              <td>{expense.amount}€</td>
+              <td>{new Date(expense.date).toLocaleDateString()}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }
