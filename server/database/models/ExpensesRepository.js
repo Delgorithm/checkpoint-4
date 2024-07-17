@@ -5,11 +5,11 @@ class ExpensesRepository extends AbstractRepository {
     super({ table: "Expenses" });
   }
 
-  async create(expense) {
-    const { amount, date, userId, categoryId, description } = expense;
+  async create(expenses) {
+    const { amount, userId, categoryId, description } = expenses;
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (amount, date, user_id, category_id, description) VALUES (?, ?, ?, ?, ?)`,
-      [amount, date, userId, categoryId, description]
+      `INSERT INTO ${this.table} (amount, user_id, category_id, description) VALUES (?, ?, ?, ?)`,
+      [amount, userId, categoryId, description]
     );
 
     return result.insertId;
