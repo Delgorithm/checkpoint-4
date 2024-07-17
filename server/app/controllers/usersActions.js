@@ -2,7 +2,7 @@ const tables = require("../../database/tables");
 
 const browse = async (req, res, next) => {
   try {
-    const users = await tables.user.readAll();
+    const users = await tables.User.readAll();
     res.json(users);
   } catch (err) {
     next(err);
@@ -11,7 +11,7 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const user = await tables.user.read(req.params.id);
+    const user = await tables.User.read(req.params.id);
     if (user == null) {
       res.sendStatus(404);
     }
@@ -21,11 +21,21 @@ const read = async (req, res, next) => {
   }
 };
 
-const edit = async (req, res, next) => {
-  const user = { ...req.body, id: req.params.id };
+const add = async (req, res, next) => {
   try {
-    await tables.user.update(user);
-    res.sendStatus(204);
+    const { email, hashedPassword, isAdmin } = req.body;
+    const newUser = {
+      email,
+      hashedPassword,
+      isAdmin: isAdmin || 0,
+    };
+
+    const result = await tables.User.create(newUser);
+
+    res.status(201).json({
+      msg: "User created successfully",
+      userId: result,
+    });
   } catch (err) {
     next(err);
   }
@@ -34,5 +44,5 @@ const edit = async (req, res, next) => {
 module.exports = {
   browse,
   read,
-  edit,
+  add,
 };
