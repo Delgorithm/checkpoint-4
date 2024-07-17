@@ -1,12 +1,25 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE User (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  firstname VARCHAR(80) NOT NULL DEFAULT "John",
+  lastname VARCHAR(80) NOT NULL DEFAULT "Doe",
+  email VARCHAR(255) UNIQUE NOT NULL,
+  hashed_password VARCHAR(255) NOT NULL,
+  is_Admin BOOLEAN NOT NULL DEFAULT 0,
+  registration_date DATE NOT NULL DEFAULT (CURRENT_DATE)
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+CREATE TABLE Category (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  type VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Expenses (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  amount DECIMAL(10, 2) NOT NULL,
+  date DATE NOT NULL DEFAULT (CURRENT_DATE),
+  user_id INT UNSIGNED NOT NULL,
+  category_id INT UNSIGNED,
+  description TEXT,
+  FOREIGN KEY (user_id) REFERENCES User(id),
+  FOREIGN KEY (category_id) REFERENCES Category(id)
 );
