@@ -14,7 +14,7 @@ import Expenses from "./pages/Expenses";
 import Dashboard from "./pages/Dashboard";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import { sendData } from "./services/api.service";
+import { fetchApi, sendData } from "./services/api.service";
 import {
   baseExpensesUrl,
   baseLoginUrl,
@@ -92,6 +92,10 @@ const router = createBrowserRouter([
           {
             path: "expenses",
             element: <Expenses />,
+            loader: async () => {
+              const allExpensesData = await fetchApi(`${baseExpensesUrl}`);
+              return allExpensesData;
+            },
             action: async ({ request }) => {
               try {
                 const formData = await request.formData();
