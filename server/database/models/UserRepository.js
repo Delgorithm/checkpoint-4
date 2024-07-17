@@ -6,19 +6,20 @@ class UserRepository extends AbstractRepository {
   }
 
   async create(user) {
-    const {
-      firstname,
-      lastname,
-      email,
-      hashedPassword,
-      isAdmin,
-      registrationDate,
-    } = user;
+    const { email, hashedPassword, isAdmin } = user;
     const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (firstname, lastname, email, hashed_password, is_Admin, registration_date) VALUES (?, ?, ?, ?, ?, ?)`,
-      [firstname, lastname, email, hashedPassword, isAdmin, registrationDate]
+      `INSERT INTO ${this.table} (email, hashed_password, is_Admin) VALUES (?, ?, ?)`,
+      [email, hashedPassword, isAdmin]
     );
     return result.insertId;
+  }
+
+  async readByEmailWithPassword(email) {
+    const [rows] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE email = ?`,
+      [email]
+    );
+    return rows[0]; // Assuming email is unique, there should be at most one row
   }
 }
 
