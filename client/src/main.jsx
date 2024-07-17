@@ -21,6 +21,7 @@ import {
   baseRegisterUrl,
 } from "./services/urls";
 import AuthProtected from "./services/AuthProtected";
+import { CurrentUserProvider } from "./contexts/CurrentUserProvider";
 
 const router = createBrowserRouter([
   {
@@ -96,22 +97,23 @@ const router = createBrowserRouter([
                 const formData = await request.formData();
                 const category = formData.get("category");
                 const amount = formData.get("amount");
-
-                // console.log("FormData:", formData);
+                const userId = formData.get("user_id");
+                const categoryId = formData.get("category_id");
 
                 const response = await sendData(
-                  `${baseExpensesUrl}/add`,
+                  `${baseExpensesUrl}`,
                   {
                     category,
                     amount,
+                    userId,
+                    categoryId,
                   },
                   "POST"
                 );
 
                 if (response.status === 201) {
-                  return redirect("expenses");
+                  return redirect("");
                 }
-
                 return null;
               } catch (error) {
                 console.error("Error submitting data:", error);
@@ -129,6 +131,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <CurrentUserProvider>
+      <RouterProvider router={router} />
+    </CurrentUserProvider>
   </React.StrictMode>
 );
