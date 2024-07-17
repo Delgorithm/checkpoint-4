@@ -1,5 +1,9 @@
+import { useParams } from "react-router-dom";
+
 function Profil() {
-    return <p>Profil</p>;
+  const { id } = useParams();
+
+  return <p>Profil {id}</p>;
 }
 
 export default Profil;
