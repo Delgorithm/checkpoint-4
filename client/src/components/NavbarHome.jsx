@@ -7,6 +7,12 @@ function NavbarHome() {
         <li>
           <Link to="/dashboard">Dashboard</Link>
         </li>
+        <li>
+          <Link to="/login">Connexion</Link>
+        </li>
+        <li>
+          <Link to="/register">Inscription</Link>
+        </li>
       </ul>
     </nav>
   );
