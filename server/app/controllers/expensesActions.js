@@ -7,8 +7,8 @@ const add = async (req, res, next) => {
     const expensesRecord = await tables.Expenses.create({
       amount,
       category,
-      user_id: userId,
-      category_id: categoryId,
+      userId,
+      categoryId,
     });
 
     res.status(201).json({
