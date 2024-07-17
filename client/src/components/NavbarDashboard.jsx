@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CurrentUserContext } from "../contexts/CurrentUserProvider";
 
 function NavbarDashboard() {
+  const { auth } = useContext(CurrentUserContext);
+
   return (
     <nav>
       <ul className="flex gap-2">
@@ -11,7 +15,7 @@ function NavbarDashboard() {
           <Link to="expenses">Dépenses</Link>
         </li>
         <li>
-          <Link to="profil">Profil</Link>
+          <Link to={`profil/${auth?.id}`}>Profil</Link>
         </li>
       </ul>
     </nav>
