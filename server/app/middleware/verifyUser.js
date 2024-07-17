@@ -4,7 +4,7 @@ const tables = require("../../database/tables");
 
 const verifyUser = async (req, res, next) => {
   try {
-    const user = await tables.user.readByEmailWithPassword(req.body.email);
+    const user = await tables.User.readByEmailWithPassword(req.body.email);
 
     let adminRole = null;
 
