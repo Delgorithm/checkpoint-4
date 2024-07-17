@@ -112,7 +112,7 @@ const router = createBrowserRouter([
                 );
 
                 if (response.status === 201) {
-                  return redirect("");
+                  alert("Bien joué sheguey");
                 }
                 return null;
               } catch (error) {
