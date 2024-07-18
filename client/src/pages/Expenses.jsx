@@ -1,19 +1,31 @@
 import { useLoaderData } from "react-router-dom";
+import { useState } from "react";
 import FormExpenses from "../components/FormExpenses";
+import BtnDeleteARow from "../components/BtnDeleteARow";
 
 function Expenses() {
   const allExpenses = useLoaderData();
-  // console.log("Mes données : ", allExpenses);
+  const [selectedExpenses, setSelectedExpenses] = useState([]);
+
+  const handleCheckboxChange = (expenseId) => {
+    setSelectedExpenses((prevSelected) =>
+      prevSelected.includes(expenseId)
+        ? prevSelected.filter((id) => id !== expenseId)
+        : [...prevSelected, expenseId]
+    );
+  };
 
   return (
     <>
       <p>Expenses</p>
       <FormExpenses method="POST" />
+      <BtnDeleteARow method="POST" selectedExpenses={selectedExpenses} />
 
       <h2>Liste des dépenses</h2>
       <table>
         <thead>
           <tr>
+            <th>Sélectionner</th>
             <th>Catégorie</th>
             <th>Montant</th>
             <th>Date</th>
@@ -22,6 +34,17 @@ function Expenses() {
         <tbody>
           {allExpenses.map((expense) => (
             <tr key={expense.id}>
+              <td>
+                <label htmlFor="checkbox" className="hidden">
+                  Test
+                </label>
+                <input
+                  type="checkbox"
+                  value={expense.id}
+                  onChange={() => handleCheckboxChange(expense.id)}
+                  checked={selectedExpenses.includes(expense.id)}
+                />
+              </td>
               <td>{expense.category}</td>
               <td>{expense.amount}€</td>
               <td>{new Date(expense.date).toLocaleDateString()}</td>
