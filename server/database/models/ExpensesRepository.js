@@ -20,8 +20,17 @@ class ExpensesRepository extends AbstractRepository {
       SELECT Expenses.id, Expenses.amount, Expenses.date, Expenses.user_id, Expenses.category_id, Expenses.description, Category.type AS category
       FROM ${this.table}
       INNER JOIN Category ON Expenses.category_id = Category.id
+      ORDER BY Expenses.id DESC
     `);
     return rows;
+  }
+
+  async delete(id) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} WHERE id = ? `,
+      [id]
+    );
+    return result.affectedRows;
   }
 }
 
