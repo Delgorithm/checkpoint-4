@@ -1,7 +1,8 @@
-import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import FormExpenses from "../components/FormExpenses";
 import BtnDeleteARow from "../components/BtnDeleteARow";
+import RechartsPieChart from "../components/RechartsPieChart";
 
 function Expenses() {
   const allExpenses = useLoaderData();
@@ -20,6 +21,8 @@ function Expenses() {
       <p>Expenses</p>
       <FormExpenses method="POST" />
       <BtnDeleteARow method="POST" selectedExpenses={selectedExpenses} />
+
+      <RechartsPieChart allExpenses={allExpenses} />
 
       <h2>Liste des dépenses</h2>
       <table>

@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
 import {
@@ -139,9 +138,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <React.StrictMode>
-    <CurrentUserProvider>
-      <RouterProvider router={router} />
-    </CurrentUserProvider>
-  </React.StrictMode>
+  <CurrentUserProvider>
+    <RouterProvider router={router} />
+  </CurrentUserProvider>
 );
