@@ -48,7 +48,7 @@ const router = createBrowserRouter([
             "POST"
           );
           if (response.status === 201) {
-            return redirect("/login");
+            return redirect("/dashboard/expenses");
           }
           return null;
         },
@@ -105,7 +105,6 @@ const router = createBrowserRouter([
                   sendData(`${baseExpensesUrl}/${id}`, {}, "DELETE")
                 );
                 await Promise.all(promises);
-                alert("Dépenses supprimées");
                 return null;
               }
 
@@ -124,7 +123,7 @@ const router = createBrowserRouter([
               );
 
               if (response.status === 201) {
-                alert("Dépense ajoutée");
+                return true;
               }
               return null;
             },

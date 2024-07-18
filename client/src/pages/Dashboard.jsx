@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
-import NavbarDashboard from "../components/NavbarDashboard";
+import DashboardSection from "../components/DashboardSection";
 
 function Dashboard() {
   return (
-    <>
-      <h1 className="text-3xl">Dashboard</h1>
-      <NavbarDashboard />
-      <Outlet />
-    </>
+    <article className="flex">
+      <DashboardSection />
+      <section>
+        <Outlet />
+      </section>
+    </article>
   );
 }
 

@@ -1,17 +1,37 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 function NavbarHome() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleOpenBurger = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="p-4 flex justify-between items-center">
+    <nav
+      className={`fixed top-0 w-full p-4 flex justify-between items-center shadow-lg transition-colors duration-300 ${
+        isScrolled ? "bg-[#7434db] text-white shadow-xl" : ""
+      }`}
+    >
       <p>ExpOn</p>
       <button
         type="button"
@@ -22,31 +42,40 @@ function NavbarHome() {
       </button>
 
       {isOpen ? (
-        <article className="absolute top-0 right-0 bg-blue-500 h-full w-2/5">
+        <article className="fixed top-0 right-0 z-50 w-3/5 h-full bg-[#7434db] md:hidden">
           <section className="p-5">
             <button
               type="button"
               onClick={handleOpenBurger}
-              className="xxs:block lg:hidden bg-red-500"
+              className="fixed top-4 right-4"
             >
-              <X />
+              <X className="w-10 h-10" />
             </button>
-            <ul className="flex flex-col justify-between h-32 mt-10">
+            <ul className="flex flex-col justify-between h-32 mt-20 w-full text-center">
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+                <Link
+                  to="/dashboard"
+                  className="text-lg text-white text-center"
+                >
+                  Dashboard
+                </Link>
               </li>
               <li>
-                <Link to="/login">Connexion</Link>
+                <Link to="/login" className="text-lg text-white">
+                  Connexion
+                </Link>
               </li>
               <li>
-                <Link to="/register">Inscription</Link>
+                <Link to="/register" className="text-lg text-white">
+                  Inscription
+                </Link>
               </li>
             </ul>
           </section>
         </article>
       ) : null}
 
-      <ul className="flex gap-2 xxs:hidden md:block">
+      <ul className="flex gap-2 xxs:hidden md:flex">
         <li>
           <Link to="/dashboard">Dashboard</Link>
         </li>

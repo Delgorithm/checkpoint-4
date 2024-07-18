@@ -12,7 +12,12 @@ function BtnDeleteARow({ method, selectedExpenses }) {
           value={expenseId}
         />
       ))}
-      <button type="submit">Supprimer</button>
+      <button
+        type="submit"
+        className="py-1.5 px-3 bg-red-600 text-white rounded-lg shadow-lg"
+      >
+        Supprimer
+      </button>
     </Form>
   );
 }

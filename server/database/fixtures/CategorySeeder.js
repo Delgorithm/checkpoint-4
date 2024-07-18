@@ -9,13 +9,7 @@ class CategorySeeder extends AbstractSeeder {
   }
 
   run() {
-    const categories = [
-      "Nourriture",
-      "Transport",
-      "Santé",
-      "Plaisirs interdits",
-      "Autre",
-    ];
+    const categories = ["Nourriture", "Transport", "Santé", "🔞", "Autre"];
     for (let i = 0; i < categories.length; i += 1) {
       const type = categories[i];
       const fakeCategory = { type, refName: `category_${i}` };

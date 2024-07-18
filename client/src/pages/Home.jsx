@@ -1,12 +1,20 @@
+import FAQSection from "../components/FAQSection";
+import FeatureSection from "../components/FeatureSection";
+import FootSection from "../components/FootSection";
 import HeroSection from "../components/HeroSection";
 import NavbarHome from "../components/NavbarHome";
+import TestimonialSection from "../components/TestimonialSection";
 
 function Home() {
   return (
-    <section className="overflow-hidden">
+    <>
       <NavbarHome />
       <HeroSection />
-    </section>
+      <FeatureSection />
+      <TestimonialSection />
+      <FAQSection />
+      <FootSection />
+    </>
   );
 }
 

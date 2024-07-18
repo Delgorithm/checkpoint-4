@@ -4,8 +4,6 @@ const add = async (req, res, next) => {
   try {
     const { amount, userId, categoryId } = req.body;
 
-    // console.log("Controller : ", req.body);
-
     const expensesRecord = await tables.Expenses.create({
       amount,
       userId,
