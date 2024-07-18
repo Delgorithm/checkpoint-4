@@ -8,12 +8,12 @@ function FormExpenses({ method }) {
 
       <label htmlFor="category">
         Catégorie
-        <select id="category" name="category" required>
-          <option value="Food">Nourriture</option>
-          <option value="Health">Santé</option>
-          <option value="Transport">Transport</option>
-          <option value="Entertainment">Plaisir</option>
-          <option value="Other">Autres</option>
+        <select id="categoryId" name="categoryId" required>
+          <option value="1">Nourriture</option>
+          <option value="4">Santé</option>
+          <option value="2">Transport</option>
+          <option value="3">Plaisir</option>
+          <option value="5">Autres</option>
         </select>
       </label>
 
@@ -31,7 +31,6 @@ function FormExpenses({ method }) {
       </label>
 
       <input type="hidden" id="user_id" name="user_id" value="1" />
-      <input type="hidden" id="category_id" name="category_id" value="1" />
 
       <button type="submit">Enregistrer</button>
     </Form>
