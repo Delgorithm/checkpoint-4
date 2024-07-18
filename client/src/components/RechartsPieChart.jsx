@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
 import PropTypes from "prop-types";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#CC33FF"];
@@ -40,10 +40,6 @@ function RechartsPieChart({ allExpenses }) {
     return acc;
   }, []);
 
-  if (data.length === 0) {
-    return <p>Aucune donnée disponible pour le graphique.</p>;
-  }
-
   return (
     <ResponsiveContainer width="100%" height={400}>
       <PieChart width="100%" height={900}>
@@ -64,6 +60,7 @@ function RechartsPieChart({ allExpenses }) {
             />
           ))}
         </Pie>
+        <Legend />
       </PieChart>
     </ResponsiveContainer>
   );
