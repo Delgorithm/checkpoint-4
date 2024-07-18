@@ -97,32 +97,37 @@ const router = createBrowserRouter([
               return allExpensesData;
             },
             action: async ({ request }) => {
-              try {
-                const formData = await request.formData();
-                const category = formData.get("category");
-                const amount = formData.get("amount");
-                const userId = formData.get("user_id");
-                const categoryId = formData.get("category_id");
+              const formData = await request.formData();
 
-                const response = await sendData(
-                  `${baseExpensesUrl}`,
-                  {
-                    category,
-                    amount,
-                    userId,
-                    categoryId,
-                  },
-                  "POST"
+              const expenseIds = formData.getAll("expenseIds[]");
+
+              if (expenseIds.length > 0) {
+                const promises = expenseIds.map((id) =>
+                  sendData(`${baseExpensesUrl}/${id}`, {}, "DELETE")
                 );
-
-                if (response.status === 201) {
-                  alert("Bien joué sheguey");
-                }
-                return null;
-              } catch (error) {
-                console.error("Error submitting data:", error);
+                await Promise.all(promises);
+                alert("Dépenses supprimées");
                 return null;
               }
+
+              const categoryId = formData.get("categoryId");
+              const amount = formData.get("amount");
+              const userId = formData.get("user_id");
+
+              const response = await sendData(
+                `${baseExpensesUrl}`,
+                {
+                  categoryId,
+                  amount,
+                  userId,
+                },
+                "POST"
+              );
+
+              if (response.status === 201) {
+                alert("Dépense ajoutée");
+              }
+              return null;
             },
           },
         ],
