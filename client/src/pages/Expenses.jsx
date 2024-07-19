@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import FormExpenses from "../components/FormExpenses";
 import BtnDeleteARow from "../components/BtnDeleteARow";
@@ -7,6 +7,10 @@ import RechartsPieChart from "../components/RechartsPieChart";
 function Expenses() {
   const allExpenses = useLoaderData();
   const [selectedExpenses, setSelectedExpenses] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleCheckboxChange = (expenseId) => {
     setSelectedExpenses((prevSelected) =>
@@ -45,7 +49,7 @@ function Expenses() {
 
       <RechartsPieChart allExpenses={allExpenses} />
 
-      <section className="overflow-x-auto">
+      <section className="overflow-x-auto overflow-hidden">
         <div className="flex justify-center py-4">
           <BtnDeleteARow method="POST" selectedExpenses={selectedExpenses} />
         </div>
@@ -91,7 +95,7 @@ function Expenses() {
                     onChange={() => handleCheckboxChange(expense.id)}
                   />
                 </td>
-                <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center ">
                   {expense.category}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700">
@@ -124,7 +128,7 @@ function Expenses() {
           <tbody className="divide-y divide-gray-200">
             {Object.entries(totalsByCategory).map(([category, total]) => (
               <tr key={category}>
-                <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center ">
                   {category}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
@@ -133,10 +137,10 @@ function Expenses() {
               </tr>
             ))}
             <tr>
-              <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+              <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center text-xl">
                 Total
               </td>
-              <td className="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+              <td className="whitespace-nowrap px-4 py-2 text-white text-center text-xl bg-[#7434db]">
                 {totalAmount.toFixed(2)}€
               </td>
             </tr>

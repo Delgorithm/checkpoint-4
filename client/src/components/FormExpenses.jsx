@@ -18,8 +18,8 @@ function FormExpenses({ method }) {
             >
               <option value="1">Nourriture</option>
               <option value="2">Transport</option>
-              <option value="4">🔞</option>
-              <option value="3">Santé</option>
+              <option value="3">🔞</option>
+              <option value="4">Santé</option>
               <option value="5">Autres</option>
             </select>
           </section>
