@@ -1,4 +1,5 @@
 import iconStar from "../assets/images/GlowingStar.svg";
+import mockup from "../assets/images/mockup2.png";
 import BtnCTA from "./BtnCTA";
 
 function HeroSection() {
@@ -12,7 +13,11 @@ function HeroSection() {
         Gérez Vos Dépenses Facilement avec Notre Application
       </h1>
       <BtnCTA className="mt-10">Commencer</BtnCTA>
-      <div className="h-96 w-11/12 mt-10 bg-[#7434db] rounded-lg" />
+      <img
+        src={mockup}
+        alt="Représentation sur téléphone de l'application"
+        className="rounded-3xl mt-10"
+      />
     </section>
   );
 }

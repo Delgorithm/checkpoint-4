@@ -14,7 +14,7 @@ function BtnDeleteARow({ method, selectedExpenses }) {
       ))}
       <button
         type="submit"
-        className="py-1.5 px-3 bg-red-600 text-white rounded-lg shadow-lg"
+        className="px-8 py-2 bg-red-600 text-white rounded-lg shadow-lg"
       >
         Supprimer
       </button>

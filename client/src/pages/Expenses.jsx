@@ -24,11 +24,63 @@ function Expenses() {
     }
   };
 
+  const totalsByCategory = allExpenses.reduce((acc, expense) => {
+    const { category, amount } = expense;
+    if (!acc[category]) {
+      acc[category] = 0;
+    }
+    acc[category] += parseFloat(amount);
+    return acc;
+  }, {});
+
+  const totalAmount = allExpenses.reduce(
+    (sum, expense) => sum + parseFloat(expense.amount),
+    0
+  );
+
   return (
     <>
       <h2 className="text-center p-4 text-2xl">Mes dépenses</h2>
       <FormExpenses method="POST" />
-      <BtnDeleteARow method="POST" selectedExpenses={selectedExpenses} />
+
+      <div className="flex justify-center">
+        <BtnDeleteARow method="POST" selectedExpenses={selectedExpenses} />
+      </div>
+
+      <section className="overflow-x-auto mt-8">
+        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <thead className="ltr:text-left rtl:text-right">
+            <tr>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Catégorie
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 text-center">
+                Montant
+              </th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-gray-200">
+            {Object.entries(totalsByCategory).map(([category, total]) => (
+              <tr key={category}>
+                <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                  {category}
+                </td>
+                <td className="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+                  {total.toFixed(2)}€
+                </td>
+              </tr>
+            ))}
+            <tr>
+              <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Total
+              </td>
+              <td className="whitespace-nowrap px-4 py-2 text-gray-700 text-center">
+                {totalAmount.toFixed(2)}€
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
 
       <RechartsPieChart allExpenses={allExpenses} />
 

@@ -1,6 +1,6 @@
 function FAQSection() {
   return (
-    <section className="space-y-4">
+    <section className="space-y-4 mx-6 p-4 bg-[#7434db] rounded-xl">
       <details
         className="group [&_summary::-webkit-details-marker]:hidden"
         open
@@ -26,7 +26,7 @@ function FAQSection() {
           </svg>
         </summary>
 
-        <p className="mt-4 px-4 leading-relaxed text-gray-700">
+        <p className="mt-4 px-4 leading-relaxed text-white">
           Pour créer un compte sur ExpOn, cliquez sur le bouton "Inscription" en
           haut à droite de la page d'accueil. Remplissez le formulaire avec vos
           informations personnelles, choisissez un mot de passe sécurisé et
@@ -57,7 +57,7 @@ function FAQSection() {
           </svg>
         </summary>
 
-        <p className="mt-4 px-4 leading-relaxed text-gray-700">
+        <p className="mt-4 px-4 leading-relaxed text-white">
           Une fois connecté, accédez à votre tableau de bord et cliquez sur
           "Ajouter une dépense". Remplissez les détails de la dépense, tels que
           la catégorie, le montant et la date. Cliquez sur "Enregistrer" pour
@@ -87,7 +87,7 @@ function FAQSection() {
           </svg>
         </summary>
 
-        <p className="mt-4 px-4 leading-relaxed text-gray-700">
+        <p className="mt-4 px-4 leading-relaxed text-white">
           Oui, ExpOn permet d'exporter vos données de dépenses au format CSV.
           Accédez à votre tableau de bord, cliquez sur "Exporter les données" et
           choisissez le format souhaité. Vous pourrez ensuite télécharger le
@@ -118,7 +118,7 @@ function FAQSection() {
           </svg>
         </summary>
 
-        <p className="mt-4 px-4 leading-relaxed text-gray-700">
+        <p className="mt-4 px-4 leading-relaxed text-white">
           ExpOn propose des visualisations graphiques intuitives de vos
           dépenses. Accédez à la section "Visualisation" de votre tableau de
           bord pour voir des graphiques détaillés de vos dépenses par catégorie,
@@ -149,7 +149,7 @@ function FAQSection() {
           </svg>
         </summary>
 
-        <p className="mt-4 px-4 leading-relaxed text-gray-700">
+        <p className="mt-4 px-4 leading-relaxed text-white">
           Si vous avez oublié votre mot de passe, cliquez sur le lien "Mot de
           passe oublié" sur la page de connexion. Entrez votre adresse e-mail et
           vous recevrez un lien pour réinitialiser votre mot de passe. Suivez
