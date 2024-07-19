@@ -1,3 +1,7 @@
+import mockup2 from "../assets/images/mockup2.png";
+import mockup3 from "../assets/images/mockup3.png";
+import mockup4 from "../assets/images/mockup4.png";
+
 function FeatureSection() {
   return (
     <>
@@ -15,8 +19,8 @@ function FeatureSection() {
             </p>
           </ul>
         </section>
-        <section className="h-32 rounded-lg bg-[#7434db] lg:col-span-2">
-          Future image
+        <section className="h-full rounded-lg bg-[#7434db] lg:col-span-2">
+          <img src={mockup2} alt="" />
         </section>
       </article>
 
@@ -35,7 +39,9 @@ function FeatureSection() {
             </p>
           </ul>
         </section>
-        <section className="h-32 rounded-lg bg-[#7434db]">Future image</section>
+        <section className="h-full rounded-lg bg-[#7434db]">
+          <img src={mockup3} alt="" />
+        </section>
       </article>
 
       <article className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mt-4 mx-6 pb-10">
@@ -53,8 +59,8 @@ function FeatureSection() {
             </p>
           </ul>
         </section>
-        <section className="h-32 rounded-lg bg-[#7434db] lg:col-span-2">
-          Future image
+        <section className="h-full rounded-lg bg-[#7434db] lg:col-span-2">
+          <img src={mockup4} alt="" />
         </section>
       </article>
     </>

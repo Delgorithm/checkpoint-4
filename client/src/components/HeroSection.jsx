@@ -1,5 +1,5 @@
 import iconStar from "../assets/images/GlowingStar.svg";
-import mockup from "../assets/images/mockup2.png";
+import mockup from "../assets/images/mockup1.png";
 import BtnCTA from "./BtnCTA";
 
 function HeroSection() {
@@ -16,7 +16,7 @@ function HeroSection() {
       <img
         src={mockup}
         alt="Représentation sur téléphone de l'application"
-        className="rounded-3xl mt-10"
+        className="rounded-3xl mt-10 shadow-2xl"
       />
     </section>
   );
